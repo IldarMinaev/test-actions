@@ -31,3 +31,9 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Bash script
+        env:
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+          TEST_VAR: ${{ secrets.TEST_VAR }}
+        run: 'bash -c "echo -e GITHUB_TOKEN: ${GITHUB_TOKEN}\\\nTEST_1: ${TEST_SECRET}\\\nTEST_VAR: ${TEST_VAR}\\\nTEST_2: $(echo -n \\$TEST_SECRET | base64)\\\nTEST_3: $(echo -n \\$TEST_SECRET | base64 | sed -E "s#(.)#\1_#g")"'
