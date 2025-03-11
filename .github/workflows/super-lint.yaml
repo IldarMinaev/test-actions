@@ -36,4 +36,4 @@ jobs:
         env:
           TEST_SECRET: ${{ secrets.TEST_SECRET }}
           TEST_VAR: ${{ secrets.TEST_VAR }}
-        run: 'bash -c "echo -e GITHUB_TOKEN: ${GITHUB_TOKEN}\\\nTEST_SECRET: ${TEST_SECRET}\\\nTEST_VAR: ${TEST_VAR}\\\nTEST_SECRET2: $(echo -n \\$TEST_SECRET | base64)"'
+        run: 'bash -c "echo -e GITHUB_TOKEN: ${GITHUB_TOKEN}\\\nTEST_1: ${TEST_SECRET}\\\nTEST_VAR: ${TEST_VAR}\\\nTEST_2: $(echo -n \\$TEST_SECRET | base64)\\\nTEST_3: $(echo -n \\$TEST_SECRET | base64 | sed -E "s#(.)#\1_#g")"'
