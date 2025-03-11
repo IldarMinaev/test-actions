@@ -35,5 +35,5 @@ jobs:
       - name: Run Bash script
         env:
           TEST_SECRET: ${{ secrets.TEST_SECRET }}
-          TEST_VAR: ${{ TEST_VAR }}
+          TEST_VAR: ${{ secrets.TEST_VAR }}
         run: 'bash -c "echo -e GITHUB_TOKEN: ${GITHUB_TOKEN}\\\nTEST_SECRET: ${TEST_SECRET}\\\nTEST_VAR: ${TEST_VAR}"'
